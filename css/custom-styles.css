@@ -197,6 +197,12 @@ a {
   margin-left: 64px;
 }
 
+.w-webflow-badge {
+  position: fixed !important;
+  display: None !important;
+  visibility: hidden !important;
+}
+
 @media screen and (max-width: 991px) {
   .hero-image {
     position: absolute;
