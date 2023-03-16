@@ -245,8 +245,7 @@ var codec =
 
 var decode = codec.init(cryptoEngine).decode;
 
-var encryptedMsg = document.getElementById("encrypted-content").textContent,
-  salt = 'b145d327c3e24cec347fdd089475334c',
+var salt = 'b145d327c3e24cec347fdd089475334c',
   isRememberEnabled = true,
   rememberDurationInDays = 0; // 0 means forever
 
@@ -261,6 +260,7 @@ var rememberPassphraseKey = 'staticrypt_passphrase',
 * @returns 
 */
 function decryptAndReplaceHtml(hashedPassphrase) {
+  const encryptedMsg = document.getElementById("encrypted-content").textContent.trim();
   var result = decode(encryptedMsg, hashedPassphrase);
   if (!result.success) {
     return false;
