@@ -293,8 +293,8 @@ jQuery.get('/js/encrypted-index.txt', function (data) {
       return false;
     }
 
-    // show the remember me checkbox
-    document.getElementById('staticrypt-remember-label').classList.remove('hidden');
+    // disable the Remember Me checkbox, always remember
+    // document.getElementById('staticrypt-remember-label').classList.remove('hidden');
 
     // if we are login out, clear the storage and terminate
     var queryParams = new URLSearchParams(window.location.search);
@@ -366,8 +366,10 @@ jQuery.get('/js/encrypted-index.txt', function (data) {
   document.getElementById('staticrypt-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    var passphrase = document.getElementById('staticrypt-password').value,
-      shouldRememberPassphrase = document.getElementById('staticrypt-remember').checked;
+    var passphrase = document.getElementById('staticrypt-password').value;
+
+    // always remember passphrase for now
+    // var shouldRememberPassphrase = document.getElementById('staticrypt-remember').checked;
 
     // decrypt and replace the whole page
     var hashedPassphrase = cryptoEngine.hashPassphrase(passphrase, salt);
@@ -375,7 +377,7 @@ jQuery.get('/js/encrypted-index.txt', function (data) {
 
     if (isDecryptionSuccessful) {
       // remember the hashedPassphrase and set its expiration if necessary
-      if (isRememberEnabled && shouldRememberPassphrase) {
+      if (isRememberEnabled) {
         window.localStorage.setItem(rememberPassphraseKey, hashedPassphrase);
 
         // set the expiration if the duration isn't 0 (meaning no expiration)
