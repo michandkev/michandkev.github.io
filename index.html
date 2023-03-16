@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Michelle & Kevin - Password</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/password-styles.css" rel="stylesheet" type="text/css" />
 
     <!-- do not cache this page -->
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -18,128 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script type="text/javascript">WebFont.load({ google: { families: ["Quicksand:regular,600"] } });</script>
     <style>
-        .staticrypt-page {
-            width: 100vw;
-            height: 100vh;
-            margin: auto;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
-        .staticrypt-form {
-            z-index: 1;
-            max-width: 400px;
-            width: 400px;
-            margin: auto;
-            padding: 45px;
-            text-align: center;
-        }
-
-        .staticrypt-form input[type="password"] {
-            outline: 0;
-            background: #ffffff;
-            width: 100%;
-            border: 0;
-            margin: 0 0 15px;
-            padding: 15px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-
-        .staticrypt-form .staticrypt-decrypt-button {
-            text-transform: uppercase;
-            outline: 0;
-            background: #d8ad9c;
-            width: 100%;
-            border: 0;
-            padding: 15px;
-            color: #FFFFFF;
-            font-size: 14px;
-            cursor: pointer;
-            font-family: Quicksand, sans-serif;
-        }
-
-        .staticrypt-form .staticrypt-decrypt-button:hover,
-        .staticrypt-form .staticrypt-decrypt-button:active,
-        .staticrypt-form .staticrypt-decrypt-button:focus {
-            background: #ca9682;
-        }
-
-        .staticrypt-html {
-            height: 100%;
-        }
-
-        .staticrypt-body {
-            height: 100%;
-            margin: 0;
-        }
-
-        .staticrypt-content {
-            height: 100%;
-            position: relative;
-            margin-bottom: 1em;
-            background-color: #eeeeec;
-            font-family: Quicksand, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .staticrypt-instructions {
-            margin-top: -1em;
-            margin-bottom: 1em;
-        }
-
-        .staticrypt-title {
-            font-size: 1.5em;
-        }
-
-        .staticrypt-password {
-            font-family: Quicksand, sans-serif;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .staticrypt-failed {
-            font-size: 13px;
-            margin: 0 0 15px;
-        }
-
-        .staticrypt-spinner-container {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .staticrypt-spinner {
-            display: inline-block;
-            width: 2rem;
-            height: 2rem;
-            vertical-align: text-bottom;
-            border: 0.25em solid gray;
-            border-right-color: transparent;
-            border-radius: 50%;
-            -webkit-animation: spinner-border .75s linear infinite;
-            animation: spinner-border .75s linear infinite;
-            animation-duration: 0.75s;
-            animation-timing-function: linear;
-            animation-delay: 0s;
-            animation-iteration-count: infinite;
-            animation-direction: normal;
-            animation-fill-mode: none;
-            animation-play-state: running;
-            animation-name: spinner-border;
-        }
-
-        @keyframes spinner-border {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
 
@@ -160,7 +40,8 @@
                     <input class="staticrypt-password" id="staticrypt-password" type="password" name="password"
                         placeholder="Password" autofocus />
 
-                    <p id="staticrypt-failed-login" class="staticrypt-failed hidden">Incorrect password. Please try again.</p>
+                    <p id="staticrypt-failed-login" class="staticrypt-failed hidden">Incorrect password. Please try
+                        again.</p>
 
                     <input type="submit" class="staticrypt-decrypt-button" value="ENTER" />
                 </form>
