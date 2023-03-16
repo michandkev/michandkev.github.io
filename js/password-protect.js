@@ -245,146 +245,143 @@ var codec =
 
 var decode = codec.init(cryptoEngine).decode;
 
-jQuery.get('/js/encrypted-index.txt', function (data) {
-  var encryptedMsg = data,
-    salt = 'b145d327c3e24cec347fdd089475334c',
-    labelError = '',
-    isRememberEnabled = true,
-    rememberDurationInDays = 0; // 0 means forever
+var encryptedMsg = document.getElementById("encrypted-content").textContent,
+  salt = 'b145d327c3e24cec347fdd089475334c',
+  isRememberEnabled = true,
+  rememberDurationInDays = 0; // 0 means forever
 
-  // constants
-  var rememberPassphraseKey = 'staticrypt_passphrase',
-    rememberExpirationKey = 'staticrypt_expiration';
+// constants
+var rememberPassphraseKey = 'staticrypt_passphrase',
+  rememberExpirationKey = 'staticrypt_expiration';
 
-  /**
-   * Decrypt our encrypted page, replace the whole HTML.
-   *
-   * @param  hashedPassphrase
-   * @returns 
-   */
-  function decryptAndReplaceHtml(hashedPassphrase) {
-    var result = decode(encryptedMsg, hashedPassphrase);
-    if (!result.success) {
-      return false;
-    }
-    var plainHTML = result.decoded;
+/**
+* Decrypt our encrypted page, replace the whole HTML.
+*
+* @param  hashedPassphrase
+* @returns 
+*/
+function decryptAndReplaceHtml(hashedPassphrase) {
+  var result = decode(encryptedMsg, hashedPassphrase);
+  if (!result.success) {
+    return false;
+  }
+  var plainHTML = result.decoded;
 
-    document.write(plainHTML);
-    document.close();
-    return true;
+  document.write(plainHTML);
+  document.close();
+  return true;
+}
+
+/**
+* Clear localstorage from staticrypt related values
+*/
+function clearLocalStorage() {
+  localStorage.removeItem(rememberPassphraseKey);
+  localStorage.removeItem(rememberExpirationKey);
+}
+
+/**
+* To be called on load: check if we want to try to decrypt and replace the HTML with the decrypted content, and
+* try to do it if needed.
+*
+* @returns  true if we derypted and replaced the whole page, false otherwise
+*/
+function decryptOnLoadFromRememberMe() {
+  if (!isRememberEnabled) {
+    return false;
   }
 
-  /**
-   * Clear localstorage from staticrypt related values
-   */
-  function clearLocalStorage() {
-    localStorage.removeItem(rememberPassphraseKey);
-    localStorage.removeItem(rememberExpirationKey);
+  // if we are login out, clear the storage and terminate
+  var queryParams = new URLSearchParams(window.location.search);
+
+  if (queryParams.has("logout")) {
+    clearLocalStorage();
+    return false;
   }
 
-  /**
-   * To be called on load: check if we want to try to decrypt and replace the HTML with the decrypted content, and
-   * try to do it if needed.
-   *
-   * @returns  true if we derypted and replaced the whole page, false otherwise
-   */
-  function decryptOnLoadFromRememberMe() {
-    if (!isRememberEnabled) {
+  // if there is expiration configured, check if we're not beyond the expiration
+  if (rememberDurationInDays && rememberDurationInDays > 0) {
+    var expiration = localStorage.getItem(rememberExpirationKey),
+      isExpired = expiration && new Date().getTime() > parseInt(expiration);
+
+    if (isExpired) {
+      clearLocalStorage();
       return false;
     }
+  }
 
-    // if we are login out, clear the storage and terminate
-    var queryParams = new URLSearchParams(window.location.search);
+  var hashedPassphrase = localStorage.getItem(rememberPassphraseKey);
 
-    if (queryParams.has("logout")) {
+  if (hashedPassphrase) {
+    // try to decrypt
+    var isDecryptionSuccessful = decryptAndReplaceHtml(hashedPassphrase);
+
+    // if the decryption is unsuccessful the password might be wrong - silently clear the saved data and let
+    // the user fill the password form again
+    if (!isDecryptionSuccessful) {
       clearLocalStorage();
       return false;
     }
 
-    // if there is expiration configured, check if we're not beyond the expiration
-    if (rememberDurationInDays && rememberDurationInDays > 0) {
-      var expiration = localStorage.getItem(rememberExpirationKey),
-        isExpired = expiration && new Date().getTime() > parseInt(expiration);
-
-      if (isExpired) {
-        clearLocalStorage();
-        return false;
-      }
-    }
-
-    var hashedPassphrase = localStorage.getItem(rememberPassphraseKey);
-
-    if (hashedPassphrase) {
-      // try to decrypt
-      var isDecryptionSuccessful = decryptAndReplaceHtml(hashedPassphrase);
-
-      // if the decryption is unsuccessful the password might be wrong - silently clear the saved data and let
-      // the user fill the password form again
-      if (!isDecryptionSuccessful) {
-        clearLocalStorage();
-        return false;
-      }
-
-      return true;
-    }
-
-    return false;
+    return true;
   }
 
-  function decryptOnLoadFromQueryParam() {
-    var queryParams = new URLSearchParams(window.location.search);
-    var hashedPassphrase = queryParams.get("staticrypt_pwd");
+  return false;
+}
 
-    if (hashedPassphrase) {
-      return decryptAndReplaceHtml(hashedPassphrase);
-    }
+function decryptOnLoadFromQueryParam() {
+  var queryParams = new URLSearchParams(window.location.search);
+  var hashedPassphrase = queryParams.get("staticrypt_pwd");
 
-    return false;
+  if (hashedPassphrase) {
+    return decryptAndReplaceHtml(hashedPassphrase);
   }
 
-  // try to automatically decrypt on load if there is a saved password
-  window.onload = function () {
-    var hasDecrypted = decryptOnLoadFromQueryParam();
+  return false;
+}
 
-    if (!hasDecrypted) {
-      hasDecrypted = decryptOnLoadFromRememberMe();
-    }
+// try to automatically decrypt on load if there is a saved password
+window.onload = function () {
+  var hasDecrypted = decryptOnLoadFromQueryParam();
 
-    // if we didn't decrypt anything, show the password prompt. Otherwise the content has already been replaced, no
-    // need to do anything
-    if (!hasDecrypted) {
-      document.getElementById("staticrypt_loading").classList.add("hidden");
-      document.getElementById("staticrypt_content").classList.remove("hidden");
-      document.getElementById("staticrypt-password").focus();
-    }
+  if (!hasDecrypted) {
+    hasDecrypted = decryptOnLoadFromRememberMe();
   }
 
-  // handle password form submission
-  document.getElementById('staticrypt-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+  // if we didn't decrypt anything, show the password prompt. Otherwise the content has already been replaced, no
+  // need to do anything
+  if (!hasDecrypted) {
+    document.getElementById("staticrypt_loading").classList.add("hidden");
+    document.getElementById("staticrypt_content").classList.remove("hidden");
+    document.getElementById("staticrypt-password").focus();
+  }
+}
 
-    var passphrase = document.getElementById('staticrypt-password').value;
+// handle password form submission
+document.getElementById('staticrypt-form').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-    // decrypt and replace the whole page
-    var hashedPassphrase = cryptoEngine.hashPassphrase(passphrase, salt);
-    var isDecryptionSuccessful = decryptAndReplaceHtml(hashedPassphrase);
+  var passphrase = document.getElementById('staticrypt-password').value;
 
-    if (isDecryptionSuccessful) {
-      // remember the hashedPassphrase and set its expiration if necessary
-      if (isRememberEnabled) {
-        window.localStorage.setItem(rememberPassphraseKey, hashedPassphrase);
+  // decrypt and replace the whole page
+  var hashedPassphrase = cryptoEngine.hashPassphrase(passphrase, salt);
+  var isDecryptionSuccessful = decryptAndReplaceHtml(hashedPassphrase);
 
-        // set the expiration if the duration isn't 0 (meaning no expiration)
-        if (rememberDurationInDays > 0) {
-          window.localStorage.setItem(
-            rememberExpirationKey,
-            (new Date().getTime() + rememberDurationInDays * 24 * 60 * 60 * 1000).toString()
-          );
-        }
+  if (isDecryptionSuccessful) {
+    // remember the hashedPassphrase and set its expiration if necessary
+    if (isRememberEnabled) {
+      window.localStorage.setItem(rememberPassphraseKey, hashedPassphrase);
+
+      // set the expiration if the duration isn't 0 (meaning no expiration)
+      if (rememberDurationInDays > 0) {
+        window.localStorage.setItem(
+          rememberExpirationKey,
+          (new Date().getTime() + rememberDurationInDays * 24 * 60 * 60 * 1000).toString()
+        );
       }
-    } else {
-      document.getElementById("staticrypt-failed-login").classList.remove("hidden");
-      document.getElementById("staticrypt-password").value = "";
     }
-  });
+  } else {
+    document.getElementById("staticrypt-failed-login").classList.remove("hidden");
+    document.getElementById("staticrypt-password").value = "";
+  }
 });
