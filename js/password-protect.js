@@ -259,9 +259,12 @@ var rememberPassphraseKey = 'staticrypt_passphrase',
 * @param  hashedPassphrase
 * @returns 
 */
-function decryptAndReplaceHtml(hashedPassphrase) {
-  const encryptedMsg = document.getElementById("encrypted-content").textContent.trim();
-  var result = decode(encryptedMsg, hashedPassphrase);
+async function decryptAndReplaceHtml(hashedPassphrase) {
+
+  const response = await fetch('/js/encrypted-content.txt');
+  const encryptedContent = await response.text();
+
+  var result = decode(encryptedContent, hashedPassphrase);
   if (!result.success) {
     return false;
   }
@@ -286,7 +289,7 @@ function clearLocalStorage() {
 *
 * @returns  true if we derypted and replaced the whole page, false otherwise
 */
-function decryptOnLoadFromRememberMe() {
+async function decryptOnLoadFromRememberMe() {
   if (!isRememberEnabled) {
     return false;
   }
@@ -314,7 +317,7 @@ function decryptOnLoadFromRememberMe() {
 
   if (hashedPassphrase) {
     // try to decrypt
-    var isDecryptionSuccessful = decryptAndReplaceHtml(hashedPassphrase);
+    var isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassphrase);
 
     // if the decryption is unsuccessful the password might be wrong - silently clear the saved data and let
     // the user fill the password form again
@@ -329,23 +332,23 @@ function decryptOnLoadFromRememberMe() {
   return false;
 }
 
-function decryptOnLoadFromQueryParam() {
+async function decryptOnLoadFromQueryParam() {
   var queryParams = new URLSearchParams(window.location.search);
   var hashedPassphrase = queryParams.get("staticrypt_pwd");
 
   if (hashedPassphrase) {
-    return decryptAndReplaceHtml(hashedPassphrase);
+    return await decryptAndReplaceHtml(hashedPassphrase);
   }
 
   return false;
 }
 
 // try to automatically decrypt on load if there is a saved password
-window.onload = function () {
-  var hasDecrypted = decryptOnLoadFromQueryParam();
+window.onload = async function () {
+  var hasDecrypted = await decryptOnLoadFromQueryParam();
 
   if (!hasDecrypted) {
-    hasDecrypted = decryptOnLoadFromRememberMe();
+    hasDecrypted = await decryptOnLoadFromRememberMe();
   }
 
   // if we didn't decrypt anything, show the password prompt. Otherwise the content has already been replaced, no
@@ -358,14 +361,14 @@ window.onload = function () {
 }
 
 // handle password form submission
-document.getElementById('staticrypt-form').addEventListener('submit', function (e) {
+document.getElementById('staticrypt-form').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   var passphrase = document.getElementById('staticrypt-password').value;
 
   // decrypt and replace the whole page
   var hashedPassphrase = cryptoEngine.hashPassphrase(passphrase, salt);
-  var isDecryptionSuccessful = decryptAndReplaceHtml(hashedPassphrase);
+  var isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassphrase);
 
   if (isDecryptionSuccessful) {
     // remember the hashedPassphrase and set its expiration if necessary
