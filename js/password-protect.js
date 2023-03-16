@@ -383,7 +383,8 @@ jQuery.get('/js/encrypted-index.txt', function (data) {
         }
       }
     } else {
-      alert(labelError);
+      document.getElementById("staticrypt-failed-login").classList.remove("hidden");
+      document.getElementById("staticrypt-password").value = "";
     }
   });
 });

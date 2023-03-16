@@ -19,7 +19,7 @@
     <script type="text/javascript">WebFont.load({ google: { families: ["Quicksand:regular,600"] } });</script>
     <style>
         .staticrypt-page {
-            width: 360px;
+            width: 100vw;
             height: 100vh;
             margin: auto;
             box-sizing: border-box;
@@ -30,8 +30,9 @@
 
         .staticrypt-form {
             z-index: 1;
-            max-width: 360px;
-            margin: 0 auto 100px;
+            max-width: 400px;
+            width: 400px;
+            margin: auto;
             padding: 45px;
             text-align: center;
         }
@@ -102,6 +103,11 @@
             display: none !important;
         }
 
+        .staticrypt-failed {
+            font-size: 13px;
+            margin: 0 0 15px;
+        }
+
         .staticrypt-spinner-container {
             height: 100%;
             display: flex;
@@ -151,8 +157,10 @@
                 </div>
 
                 <form id="staticrypt-form" action="#" method="post">
-                    <input class="staticrypt-password" id="staticrypt-password" type="password" name="password" placeholder="Password"
-                        autofocus />
+                    <input class="staticrypt-password" id="staticrypt-password" type="password" name="password"
+                        placeholder="Password" autofocus />
+
+                    <p id="staticrypt-failed-login" class="staticrypt-failed hidden">Incorrect password. Please try again.</p>
 
                     <input type="submit" class="staticrypt-decrypt-button" value="ENTER" />
                 </form>
