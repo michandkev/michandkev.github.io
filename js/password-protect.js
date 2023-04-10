@@ -356,7 +356,6 @@ window.onload = async function () {
   if (!hasDecrypted) {
     document.getElementById("staticrypt_loading").classList.add("hidden");
     document.getElementById("staticrypt_content").classList.remove("hidden");
-    document.getElementById("staticrypt-password").focus();
   }
 }
 
