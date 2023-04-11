@@ -643,7 +643,7 @@ const templateError = "template_error",
   isRememberEnabled = true,
   staticryptConfig = {
     isRememberEnabled: true,
-    rememberDurationInDays: 0,
+    rememberDurationInDays: 7,
     salt: "74180c365af40470eb212424923ffd89",
   };
 
