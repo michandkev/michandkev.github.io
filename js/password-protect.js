@@ -644,7 +644,7 @@ const templateError = "template_error",
   staticryptConfig = {
     isRememberEnabled: true,
     rememberDurationInDays: 0,
-    salt: "e7653088696d18ef7344ccd1843082ae",
+    salt: "74180c365af40470eb212424923ffd89",
   };
 
 // you can edit these values to customize some of the behavior of StatiCrypt
