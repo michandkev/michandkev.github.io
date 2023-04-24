@@ -8,11 +8,6 @@ a {
   text-decoration: underline;
 }
 
-.container {
-  max-width: 80%;
-  margin-top: 40px;
-}
-
 .accordion-icon {
   margin-right: 24px;
   color: #93A888;
@@ -36,10 +31,10 @@ a {
   right: auto;
   bottom: 0%;
   z-index: auto;
-  width: 50%;
+  width: 80%;
   margin-right: 0px;
   margin-bottom: 64px;
-  margin-left: 74px;
+  margin-left: 64px;
   float: none;
   clear: none;
   font-family: Quicksand, sans-serif;
@@ -240,6 +235,7 @@ a {
 
   .right {
     width: 100%;
+    margin: 0;
   }
 
   .main-container {
@@ -249,18 +245,10 @@ a {
 }
 
 @media screen and (max-width: 767px) {
-  .container {
-    max-width: 90%;
-  }
-
   .hero-image {
     height: 400px;
     -o-object-fit: cover;
     object-fit: cover;
-  }
-
-  .hero-content {
-    width: 100%;
   }
 
   .left {
@@ -268,21 +256,20 @@ a {
   }
 
   .logo-image {
-    width: 60%;
+    width: 50%;
   }
 }
 
 @media screen and (max-width: 479px) {
 
   .hero-content {
-    width: 100%;
     margin-right: 32px;
     margin-bottom: 32px;
     margin-left: 32px;
   }
 
   .right {
-    padding: 48px;
+    padding: 32px 32px 64px 32px;
   }
 
   .contact-container {

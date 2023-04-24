@@ -612,12 +612,6 @@ window.onload = async function () {
     // hide loading screen
     document.getElementById("staticrypt_loading").classList.add("hidden");
     document.getElementById("staticrypt_content").classList.remove("hidden");
-    document.getElementById("staticrypt-password").focus();
-
-    // show the remember me checkbox
-    if (isRememberEnabled) {
-      document.getElementById("staticrypt-remember-label").classList.remove("hidden");
-    }
   }
 };
 
