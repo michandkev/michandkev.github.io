@@ -589,7 +589,7 @@ const staticryptInitiator =
 ;
 const templateError = "template_error",
   isRememberEnabled = true,
-  staticryptConfig = { "isRememberEnabled": true, "rememberDurationInDays": 7, "staticryptSaltUniqueVariableName": "eda409bc23398eac523ccbcc64ff6198" };
+  staticryptConfig = { "isRememberEnabled": true, "rememberDurationInDays": 7, "staticryptSaltUniqueVariableName": "7ee37858828ebc610fdae6e828fadcad" };
 
 // you can edit these values to customize some of the behavior of StatiCrypt
 const templateConfig = {
