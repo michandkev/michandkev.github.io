@@ -1,0 +1,87 @@
+/*** 
+*
+* This css file handles the styling for the animated FAQ dropdown
+*
+*/
+.accordion {
+  width: 100%;
+  height: auto;
+  grid-column: var(--desktop-span-full);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0 24px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.accordion .faq-question-set {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.accordion .link {
+  background: var(--off-white);
+  border-radius: var(--desktop-faq-item-border-radius);
+  cursor: pointer;
+  padding: var(--desktop-faq-item-padding);
+  color: var(--dark-grey);
+  -webkit-transition: var(--desktop-animated-text-transition);
+  -o-transition: var(--desktop-animated-text-transition);
+  transition: var(--desktop-animated-text-transition);
+  display: flex;
+  gap: var(--desktop-faq-item-padding);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion li.open .link {
+  border-radius: var(--desktop-faq-item-border-radius)
+    var(--desktop-faq-item-border-radius) 0 0;
+}
+
+.submenu {
+  display: none;
+  background: var(--off-white);
+  border-radius: 0 0 var(--desktop-faq-item-border-radius)
+    var(--desktop-faq-item-border-radius);
+}
+
+.faq-answer-text {
+  border-top: 1px solid var(--beige);
+  margin-right: var(--desktop-faq-item-padding);
+  padding: var(--desktop-faq-item-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-chevron {
+  background: url("/assets/chevron-down.svg");
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  -webkit-transition: var(--desktop-animated-text-transition);
+  -o-transition: var(--desktop-animated-text-transition);
+  transition: var(--desktop-animated-text-transition);
+}
+
+.accordion li.open .faq-chevron {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/** Tablet */
+@media screen and (max-width: 991px) {
+  .accordion {
+    gap: 24px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .accordion .faq-question-set {
+    gap: 24px;
+  }
+}

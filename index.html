@@ -1,11 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="staticrypt-html">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73WSZRSR8R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-<head>
-    <meta charset="utf-8">
+      gtag('config', 'G-73WSZRSR8R');
+    </script>
+
+    <meta charset="utf-8" />
     <title>Michelle & Kevin - Password</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/password-styles.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style-password.css" rel="stylesheet" type="text/css" />
 
     <!-- do not cache this page -->
     <meta http-equiv="cache-control" content="max-age=0" />
@@ -15,42 +24,64 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-    <script type="text/javascript">WebFont.load({ google: { families: ["Quicksand:regular,600"] } });</script>
+    <link
+      href="https://fonts.gstatic.com"
+      rel="preconnect"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      WebFont.load({ google: { families: ["Quicksand:regular,600"] } });
+    </script>
 
-    <link href="assets/favicon-logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link
+      href="assets/favicon-logo.png"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
     <link href="assets/favicon-logo.png" rel="apple-touch-icon" />
-</head>
+  </head>
 
-<body class="staticrypt-body">
-
+  <body class="staticrypt-body">
     <div id="staticrypt_loading" class="staticrypt-spinner-container">
-        <div class="staticrypt-spinner"></div>
+      <div class="staticrypt-spinner"></div>
     </div>
 
     <div id="staticrypt_content" class="staticrypt-content hidden">
-        <div class="staticrypt-background-image"></div>
-        <div class="staticrypt-page">
-            <div class="staticrypt-instructions">
-                <p class="staticrypt-title">Look for the password on your save the date</p>
-            </div>
-
-            <form class="staticrypt-form" id="staticrypt-form" action="#" method="post">
-                <input class="staticrypt-password" id="staticrypt-password" type="password" name="password"
-                    placeholder="Enter password" />
-
-                <p id="staticrypt-failed-login" class="staticrypt-failed hidden">
-                    Sorry, that password was incorrect. Please try again.</p>
-
-                <input type="submit" class="staticrypt-decrypt-button" value="Go" />
-            </form>
-
-
+      <div class="staticrypt-background-image"></div>
+      <div class="staticrypt-page">
+        <div class="staticrypt-instructions">
+          <p class="staticrypt-title">
+            Look for the password on your invitation
+          </p>
         </div>
+
+        <form
+          class="staticrypt-form"
+          id="staticrypt-form"
+          action="#"
+          method="post"
+        >
+          <input
+            class="staticrypt-password"
+            id="staticrypt-password"
+            type="password"
+            name="password"
+            placeholder="Enter password"
+          />
+
+          <p id="staticrypt-failed-login" class="staticrypt-failed hidden">
+            Sorry, that password was incorrect. Please try again.
+          </p>
+
+          <input type="submit" class="staticrypt-decrypt-button" value="Go" />
+        </form>
+      </div>
     </div>
 
-    <script src="js/password-protect.js" type="text/javascript"></script>
-</body>
-
+    <script src="js/password-encryption.js" type="text/javascript"></script>
+  </body>
 </html>

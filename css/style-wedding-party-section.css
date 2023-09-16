@@ -1,0 +1,219 @@
+/*** 
+*
+* This css file handles the styling for Wedding Party section and the animated bios
+*
+*/
+.wedding-party-container {
+  display: grid;
+  grid-template-columns: var(--desktop-grid-columns);
+  gap: 80px 24px;
+  grid-column: var(--desktop-span-full);
+}
+
+.wedding-party-member {
+  grid-column: span 3;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  justify-items: center;
+
+  @media screen and (min-width: 1200px) {
+    &:hover {
+      .party-member-blurb-background {
+        opacity: 1;
+      }
+
+      .animate-size {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        border-radius: var(--desktop-wedding-party-border-radius);
+      }
+
+      .party-member-blurb-container {
+        opacity: 1;
+      }
+
+      .wedding-party-info {
+        opacity: 0;
+        height: 0px;
+      }
+    }
+  }
+}
+
+.wedding-party-info {
+  opacity: 1;
+  transition: var(--desktop-animated-text-transition);
+  height: 65px;
+  margin-top: -8px; /** hack to make a smooth transition. pair with the 24px padding below to give us 16 */
+}
+
+.wedding-party-title {
+  padding: 24px 0 4px 0;
+}
+
+.party-member-photo-container {
+  grid-area: var(--desktop-wedding-party-photo-grid-area);
+  width: 100%;
+}
+
+.party-member-photo {
+  background-position: 50% 0%;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.party-member-blurb-background {
+  grid-area: var(--desktop-wedding-party-photo-grid-area);
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+}
+
+.animate-size {
+  width: calc(100% - 32px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transition: var(--desktop-animated-text-transition);
+}
+
+.party-member-blurb-container {
+  width: 100%;
+  border-radius: var(--desktop-wedding-party-border-radius);
+  grid-area: var(--desktop-wedding-party-photo-grid-area);
+  transition: var(--desktop-animated-text-transition);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.party-member-blurb-title {
+  color: var(--off-white);
+  padding: var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-padding) 0
+    var(--desktop-wedding-party-blurb-padding);
+}
+
+.party-member-blurb-name {
+  padding: var(--desktop-wedding-party-blurb-name-top-pad)
+    var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-name-bottom-pad)
+    var(--desktop-wedding-party-blurb-padding);
+}
+
+.party-member-blurb {
+  padding: 0 var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-padding);
+
+  /*.paragraph-default-medium-font*/
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 1399px) {
+  .wedding-party-member {
+  
+    @media screen and (min-width: 1200px) {
+      &:hover {
+  
+        .animate-size {
+          aspect-ratio: 2 / 3;
+        }
+      }
+    }
+  }
+
+  .party-member-blurb-title {
+    padding: var(--large-tablet-wedding-party-blurb-padding)
+    var(--large-tablet-wedding-party-blurb-padding) 0
+    var(--large-tablet-wedding-party-blurb-padding);
+  }
+  
+  .party-member-blurb-name {
+    padding: var(--desktop-wedding-party-blurb-name-top-pad)
+    var(--large-tablet-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-name-bottom-pad)
+    var(--large-tablet-wedding-party-blurb-padding);
+  }
+
+  .party-member-blurb {
+    /*.paragraph-small-medium-font*/
+    font-size: 14px;
+    line-height: 20px;
+    
+    padding: 0 var(--large-tablet-wedding-party-blurb-padding)
+    var(--large-tablet-wedding-party-blurb-padding)
+    var(--large-tablet-wedding-party-blurb-padding);
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  h4 {
+    font-size: 18px;
+  }
+
+  .wedding-party-container {
+    gap: 20px 20px;
+  }
+
+  .wedding-party-member {
+    grid-column: span 6;
+  }
+
+  .party-member-photo-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .animate-size {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--desktop-wedding-party-border-radius);
+  }
+
+  .party-member-blurb-container {
+    aspect-ratio: 3 / 4;
+    height: 100%;
+    opacity: 1;
+    justify-content: end;
+    text-align: start;
+    overflow: visible;
+  }
+
+  .wedding-party-info {
+    opacity: 0;
+    height: 0px;
+  }
+
+  .party-member-blurb-title {
+    padding: 80px
+    var(--desktop-wedding-party-blurb-padding) 0
+    var(--desktop-wedding-party-blurb-padding);
+  }
+
+  .party-member-blurb-name {
+    padding: var(--desktop-wedding-party-blurb-name-top-pad)
+    var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-name-bottom-pad)
+    var(--desktop-wedding-party-blurb-padding);
+  }
+
+  .party-member-blurb {
+    padding: 0 var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-padding)
+    var(--desktop-wedding-party-blurb-padding);
+  }
+}
+
+/** Mobile */
+@media screen and (max-width: 743px) {
+  .wedding-party-member {
+    grid-column: var(--desktop-span-full);
+  }
+}

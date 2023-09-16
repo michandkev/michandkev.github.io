@@ -1,0 +1,69 @@
+/**
+* Style sheet to handle the background photos of the wedding party
+*/
+
+#charlene-photo {
+  background-image: url("/assets/charlene_desktop.jpg");
+}
+
+#esther-photo {
+  background-image: url("/assets/esther_desktop.jpg");
+}
+
+#winnie-photo {
+  background-image: url("/assets/winnie_desktop.jpg");
+}
+
+#kelsey-photo {
+  background-image: url("/assets/kelsey_desktop.jpg");
+}
+
+#peter-photo {
+  background-image: url("/assets/pete_desktop.jpg");
+}
+
+#neil-photo {
+  background-image: url("/assets/neil_desktop.jpg");
+}
+
+#ryan-photo {
+  background-image: url("/assets/ryan_desktop.jpg");
+}
+
+#rohan-photo {
+  background-image: url("/assets/rohan_desktop.jpg");
+}
+
+@media screen and (max-width: 1199px) {
+  #charlene-photo {
+    background-image: url("/assets/charlene_mobile.jpg");
+  }
+
+  #esther-photo {
+    background-image: url("/assets/esther_mobile.jpg");
+  }
+  
+  #winnie-photo {
+    background-image: url("/assets/winnie_mobile.jpg");
+  }
+  
+  #kelsey-photo {
+    background-image: url("/assets/kelsey_mobile.jpg");
+  }
+  
+  #peter-photo {
+    background-image: url("/assets/pete_mobile.jpg");
+  }
+  
+  #neil-photo {
+    background-image: url("/assets/neil_mobile.jpg");
+  }
+  
+  #ryan-photo {
+    background-image: url("/assets/ryan_mobile.jpg");
+  }
+  
+  #rohan-photo {
+    background-image: url("/assets/rohan_mobile.jpg");
+  }
+}

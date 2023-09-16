@@ -1,0 +1,403 @@
+/*** Main style sheet for the website ***/
+:root {
+  /* color palette */
+  --beige: #e1d9d0;
+  --dark-green: #3c4a2e;
+  --dark-grey: #57655e;
+  --light-grey: #a3aead;
+  --light-sage: #93a888;
+  --off-white: #fbf8f4;
+  --sage: #748c67;
+  --blush: #d3a292;
+
+  --hero-z-index: -1;
+  --navbar-z-index: 10;
+  --modal-z-index: 11;
+
+  /* calculate the width of modal by getting the width of 9 grid columns */
+  --desktop-modal-width: calc(
+    (
+        (
+            100vw - (2 * var(--desktop-section-side-padding)) +
+              var(--desktop-grid-gutter)
+          ) / 12
+      ) * 9 + var(--desktop-section-side-padding)
+  );
+  --desktop-modal-left: calc(100vw - var(--desktop-modal-width));
+
+  /* desktop variables */
+  --desktop-grid-columns: repeat(12, 1fr);
+  --desktop-span-full: span 12;
+  --desktop-max-width: 1440px;
+  --desktop-section-side-padding: 80px;
+  --desktop-section-bottom-padding: 100px;
+  --desktop-section-padding: 64px var(--desktop-section-side-padding)
+    var(--desktop-section-bottom-padding) var(--desktop-section-side-padding);
+  --desktop-grid-gutter: 24px;
+  --desktop-our-story-carousel-vertical-padding: 40px;
+  --desktop-our-story-carousel-indicator-size: 12px;
+  --desktop-our-story-carousel-nav-spacing: 16px;
+  --desktop-our-story-nav-arrow-size: 56px;
+  --desktop-under-header-margin: 40px;
+  --desktop-faq-item-border-radius: 12px;
+  --desktop-faq-item-padding: 24px;
+  --desktop-modal-animation-time: 0.5s;
+  --desktop-modal-content-padding: 40px;
+  --desktop-modal-header-height: 156px;
+  --desktop-section-icon-width: 140px;
+  --desktop-section-info-details-container-padding: 64px;
+  --desktop-section-info-block-padding: 32px 0;
+  --desktop-section-schedule-day-bottom-padding: 16px;
+  --desktop-animated-text-transition: all 0.4s ease;
+  --desktop-wedding-party-border-radius: 24px;
+  --desktop-wedding-party-blurb-padding: 16px;
+  --desktop-wedding-party-blurb-name-top-pad: 4px;
+  --desktop-wedding-party-blurb-name-bottom-pad: 16px;
+  --desktop-wedding-party-photo-grid-area: 1 / 1 / 2 / 2;
+
+  /* tablet variables */
+  --large-tablet-wedding-party-blurb-padding: 12px;
+
+  --tablet-our-story-nav-arrows: 32px;
+  --tablet-section-bottom-padding: 40px;
+  --tablet-section-padding: 32px 32px var(--tablet-section-bottom-padding) 32px;
+  --tablet-section-side-padding: 32px;
+  --tablet-grid-gutter: 16px;
+  --tablet-our-story-carousel-vertical-padding: 24px;
+  --tablet-our-story-carousel-indicator-size: 10px;
+  --tablet-our-story-carousel-nav-spacing: 8px;
+  --tablet-our-story-nav-arrow-size: 32px;
+  --tablet-under-header-margin: 24px;
+  --tablet-section-info-details-container-padding: 24px;
+  --tablet-section-schedule-day-bottom-padding: 8px;
+  --tablet-section-info-block-padding: 16px 0;
+  --tablet-modal-header-height: 134px;
+
+  /* mobile variables */
+  --mobile-section-padding: 24px 24px 40px 24px;
+  --mobile-section-side-padding: 24px;
+  --mobile-modal-header-height: 118px;
+  --small-mobile-modal-header-height: 172px;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "Quicksand";
+  scroll-behavior: smooth;
+
+  animation: fadeInOpacity ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+html {
+  background: var(--off-white);
+}
+
+p {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+/*** Generic section styling ***/
+.section-info {
+  scroll-margin-top: var(--header-nav-height);
+  padding: var(--desktop-section-padding);
+}
+
+.section-info-content {
+  width: auto;
+  max-width: calc(
+    var(--desktop-max-width) - 2 * var(--desktop-section-side-padding)
+  );
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: var(--desktop-grid-columns);
+  gap: 0 var(--desktop-grid-gutter);
+}
+
+.section-info-content h2 {
+  grid-column: var(--desktop-span-full);
+  margin-bottom: var(--desktop-under-header-margin);
+}
+
+.section-white {
+  background-color: var(--off-white);
+  color: var(--dark-grey);
+}
+
+.section-white h2 {
+  color: var(--blush);
+}
+
+.section-green {
+  background-color: var(--dark-grey);
+  color: var(--off-white);
+}
+
+.section-beige {
+  background-color: var(--beige);
+  color: var(--dark-grey);
+}
+
+.section-beige h3 {
+  color: var(--blush);
+}
+
+/*** Explore and Travel section styling ***/
+.one-third-header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-column: span 4;
+}
+
+.section-icon {
+  width: var(--desktop-section-icon-width);
+}
+
+.details-item-list {
+  padding-inline-start: 20px;
+  margin: 0;
+}
+
+li.details-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.section-info-long-text-container {
+  grid-column: span 8;
+  padding: var(--desktop-section-info-details-container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border-radius: 40px;
+  background: var(--off-white);
+}
+
+.info-long-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/*** Details and Schedule section styling ***/
+.one-half-header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-column: span 6;
+}
+
+.section-info-details-container {
+  grid-column: span 6;
+}
+
+.info-details-info-block {
+  border-top: 1px solid var(--beige);
+  padding: var(--desktop-section-info-block-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#details-wedding-date {
+  padding-top: 16px;
+  border: none;
+}
+
+.info-details-info-block-last-item {
+  padding-bottom: 0;
+}
+
+.schedule-day-before {
+  padding: var(--desktop-section-schedule-day-bottom-padding) 0;
+}
+
+.schedule-day-of {
+  padding: 64px 0 var(--desktop-section-schedule-day-bottom-padding) 0;
+}
+
+#schedule h3 {
+  color: var(--light-grey);
+}
+
+.rsvp-button {
+  background-color: var(--sage);
+  color: var(--off-white);
+  width: 224px;
+  padding: 20px 0;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 24px;
+  border: none;
+  border-radius: 60px;
+}
+
+.rsvp-button:hover {
+  background-color: var(--light-sage);
+}
+
+/*** Registry section styling ***/
+
+.registry-info-container {
+  grid-column: span 8;
+}
+
+.registry-info-text {
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.registry-link {
+  display: flex;
+  gap: 8px;
+}
+
+.registry-link-icon {
+  color: #000;
+  font-family: Quicksand;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.registry-icon {
+  grid-column: span 4;
+  background-image: url("/assets/registry_icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top right;
+}
+
+/*** Contact section styling ***/
+
+.contact-info-container {
+  grid-column: var(--desktop-span-full);
+  display: flex;
+  gap: 24px;
+}
+
+.contact-info {
+  width: 200px;
+}
+
+.contact-phone {
+  padding: 16px 0 8px 0;
+}
+
+#questions h4 {
+  color: var(--light-grey);
+}
+
+#questions p,
+#questions a {
+  color: var(--off-white);
+  text-decoration: none;
+
+  /* paragraph-default-font */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+/*** Tablet ***/
+@media screen and (max-width: 991px) {
+  .section-info {
+    scroll-margin-top: var(--tablet-header-nav-height);
+    padding: var(--tablet-section-padding);
+  }
+
+  .section-info-content {
+    gap: 0 var(--tablet-grid-gutter);
+  }
+
+  .section-info-content h2 {
+    margin-bottom: var(--tablet-under-header-margin);
+  }
+
+  .section-icon {
+    display: none;
+  }
+
+  .one-third-header-container,
+  .section-info-long-text-container,
+  .one-half-header-container,
+  .section-info-details-container {
+    grid-column: 1 / -1;
+  }
+
+  .section-info-long-text-container {
+    padding: var(--tablet-section-info-details-container-padding);
+  }
+
+  .schedule-day-before {
+    padding: 0 0 var(--tablet-section-schedule-day-bottom-padding) 0;
+  }
+
+  .schedule-day-of {
+    padding: 40px 0 var(--tablet-section-schedule-day-bottom-padding) 0;
+  }
+
+  .info-details-info-block {
+    padding: var(--tablet-section-info-block-padding);
+  }
+
+  .info-details-info-block-last-item {
+    padding-bottom: 0;
+  }
+
+  #details-wedding-date {
+    padding-top: 0;
+  }
+
+  .contact-info-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #questions p {
+    /* paragraph-small-font */
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .registry-info-container {
+    grid-column: var(--desktop-span-full);
+  }
+
+  .registry-link {
+    padding-bottom: 24px;
+  }
+
+  .registry-icon {
+    width: 100%;
+    aspect-ratio: 1;
+    grid-column: 5 / span 4;
+  }
+}
+
+/** Mobile */
+@media screen and (max-width: 479px) {
+  .section-info {
+    scroll-margin-top: var(--mobile-header-nav-height);
+    padding: var(--mobile-section-padding);
+  }
+
+  .rsvp-button {
+    width: 100%;
+  }
+
+  .registry-icon {
+    grid-column: 3 / span 8;
+  }
+}

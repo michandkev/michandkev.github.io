@@ -1,0 +1,145 @@
+/**************** Text Styles ***************/
+h2 {
+  font-family: "Prata";
+  font-size: 64px;
+  font-weight: 400;
+  margin: 0;
+}
+
+h3 {
+  font-family: "Quicksand";
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 2.24px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h4 {
+  font-family: "Quicksand";
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  text-transform: none;
+}
+
+h5 {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 22px;
+}
+
+a {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  text-decoration: underline;
+  color: var(--sage);
+}
+
+a:hover {
+  color: var(--light-sage);
+}
+
+strong {
+  font-weight: 600;
+}
+
+.button-font {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.side-sheet-font {
+  font-family: Prata;
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--blush);
+}
+
+.eyebrow-font {
+  font-family: "Quicksand";
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--light-grey);
+  text-transform: uppercase;
+}
+
+.paragraph-default-font {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.paragraph-default-medium-font {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.paragraph-small-medium-font {
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.paragraph-default-bold-font {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.paragraph-default-bold-font {
+  font-family: "Quicksand";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.paragraph-small-font {
+  font-family: "Quicksand";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.paragraph-small-link-font {
+  font-family: Quicksand;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration-line: underline;
+  color: var(--sage);
+  cursor: pointer;
+}
+
+.paragraph-small-link-font:hover {
+  color: var(--light-sage);
+}
+
+@media (max-width: 991px) {
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 20px;
+    letter-spacing: 1.6px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  .side-sheet-font {
+    font-size: 40px;
+  }
+}

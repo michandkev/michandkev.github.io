@@ -1,0 +1,188 @@
+/*** 
+*
+* This css file handles the styling for Our Story h-scroll unit
+*
+*/
+.our-story-header-line {
+  grid-column: var(--desktop-span-full);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#our-story-header-text {
+  margin-bottom: 0;
+}
+
+.our-story-header-buttons {
+  margin-left: auto;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--desktop-our-story-carousel-nav-spacing);
+}
+
+.our-story-nav-arrows {
+  display: block;
+  width: var(--desktop-our-story-nav-arrow-size);
+  height: var(--desktop-our-story-nav-arrow-size);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-color: var(--light-grey);
+  background-size: 20%;
+}
+
+.our-story-nav-arrow-active {
+  background-color: var(--sage);
+  cursor: pointer;
+}
+
+.our-story-nav-arrow-active:active {
+  background-color: var(--light-sage);
+}
+
+@media (hover: hover) {
+  .our-story-nav-arrow-active:hover {
+    background-color: var(--light-sage);
+  }
+}
+
+.left-arrow {
+  background-image: url("/assets/left-arrow.svg");
+  background-position: 47% 50%;
+}
+
+.right-arrow {
+  background-image: url("/assets/right-arrow.svg");
+  background-position: 53% 50%;
+}
+
+.our-story-carousel-indcators {
+  grid-column: var(--desktop-span-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.carousel-indicator {
+  width: var(--desktop-our-story-carousel-indicator-size);
+  height: var(--desktop-our-story-carousel-indicator-size);
+  border-radius: 50%;
+  display: none;
+  background-color: var(--light-grey);
+  cursor: pointer;
+}
+
+.indicator-active {
+  background-color: var(--dark-green);
+  cursor: default;
+}
+
+.our-story-img-text {
+  color: var(--off-white);
+  margin: 0;
+}
+
+.our-story-img-title {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.horizontal-snap {
+  grid-column: var(--desktop-span-full);
+  max-width: calc(
+    min(100vw, var(--desktop-max-width)) -
+      (2 * var(--desktop-section-side-padding))
+  );
+  height: auto;
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--desktop-grid-gutter);
+  padding: var(--desktop-our-story-carousel-vertical-padding) 0;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-snap > a {
+  scroll-snap-align: center;
+  pointer-events: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.horizontal-snap img {
+  width: calc(
+    (
+        (
+            100vw - (2 * var(--desktop-section-side-padding)) +
+              var(--desktop-grid-gutter)
+          ) / 4
+      ) - var(--desktop-grid-gutter)
+  );
+  max-width: calc(
+    (
+        (
+            var(--desktop-max-width) - (2 * var(--desktop-section-side-padding)) +
+              var(--desktop-grid-gutter)
+          ) / 4
+      ) - var(--desktop-grid-gutter)
+  );
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+/** Tablet */
+@media screen and (max-width: 991px) {
+  .our-story-nav-arrows {
+    width: var(--tablet-our-story-nav-arrow-size);
+    height: var(--tablet-our-story-nav-arrow-size);
+  }
+
+  .horizontal-snap {
+    max-width: calc(100vw - (2 * var(--tablet-section-side-padding)));
+    gap: var(--tablet-grid-gutter);
+    padding: var(--tablet-our-story-carousel-vertical-padding) 0;
+  }
+
+  .horizontal-snap img {
+    width: calc(
+      (
+          (
+              100vw - (2 * var(--tablet-section-side-padding)) +
+                var(--tablet-grid-gutter)
+            ) / 12
+        ) * 5 - var(--tablet-grid-gutter)
+    );
+  }
+
+  .our-story-header-buttons {
+    gap: var(--tablet-our-story-carousel-nav-spacing);
+  }
+}
+
+/** Mobile */
+@media screen and (max-width: 479px) {
+  .horizontal-snap {
+    max-width: calc(100vw - (2 * var(--mobile-section-side-padding)));
+  }
+
+  .horizontal-snap img {
+    width: calc(
+      (
+          (
+              100vw - (2 * var(--mobile-section-side-padding)) +
+                var(--tablet-grid-gutter)
+            ) / 12
+        ) * 11 - var(--tablet-grid-gutter)
+    );
+  }
+}

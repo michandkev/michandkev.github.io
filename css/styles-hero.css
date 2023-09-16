@@ -1,0 +1,121 @@
+/*** 
+*
+* This css file handles the styling for hero section of the page.
+*
+*/
+.hero-section-placeholder,
+.hero-section {
+  min-height: 0;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#hero-section {
+  background-image: url("/assets/hero_desktop.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: var(--hero-z-index);
+  position: fixed;
+}
+
+.hero-logo-container {
+  position: absolute;
+  top: calc(80px + var(--header-nav-height));
+  left: 80px;
+  width: 240px;
+  height: auto;
+}
+
+.hero-logo {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.hero-text-container {
+  color: var(--off-white);
+  position: absolute;
+  right: 80px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "Quicksand";
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.hero-date {
+  letter-spacing: 5.6px;
+}
+
+.hero-location {
+  letter-spacing: 2.8px;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-section-placeholder,
+  .hero-section {
+    height: min(100vw / 0.8, 100%);
+  }
+
+  #hero-section {
+    background-image: url("/assets/hero_tablet.jpg");
+  }
+
+  .hero-logo-container {
+    top: calc(32px + var(--tablet-header-nav-height));
+    left: 32px;
+    width: 160px;
+  }
+
+  .hero-text-container {
+    right: 32px;
+    bottom: 40px;
+    gap: 4px;
+    font-size: 24px;
+  }
+
+  .hero-date {
+    letter-spacing: 4.8px;
+  }
+
+  .hero-location {
+    letter-spacing: 2.4px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .hero-section-placeholder,
+  .hero-section {
+    height: min(100vw / 0.75, 100%);
+  }
+
+  #hero-section {
+    background-image: url("/assets/hero_mobile.jpg");
+  }
+
+  .hero-logo-container {
+    top: calc(32px + var(--mobile-header-nav-height));
+    left: 24px;
+    width: 80px;
+  }
+
+  .hero-text-container {
+    right: 24px;
+    bottom: 40px;
+    font-size: 16px;
+  }
+
+  .hero-date {
+    letter-spacing: 3.2px;
+  }
+
+  .hero-location {
+    letter-spacing: 1.6px;
+  }
+}

@@ -1,0 +1,157 @@
+/*** 
+*
+* This css file handles the styling for outfit inspiration modal
+*
+*/
+.outfit-inspo-modal {
+  position: fixed; /* Stay in place */
+  z-index: var(--modal-z-index);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.outfit-inspo-modal h3 {
+  color: var(--light-grey);
+}
+
+.outfit-inspo-modal-content-container {
+  background-color: var(--off-white);
+  width: var(--desktop-modal-width);
+  height: 100vh;
+  position: relative;
+  overflow: scroll;
+  left: 100%;
+}
+
+.outfit-inspo-modal-content-opened {
+  margin-left: auto;
+  left: 0;
+  animation: var(--desktop-modal-animation-time) modal-slide-left;
+}
+
+.outfit-inspo-modal-content-closed {
+  animation: var(--desktop-modal-animation-time) desktop-modal-slide-right;
+}
+
+.outfit-inspo-modal-closed {
+  animation: var(--desktop-modal-animation-time) fade-out;
+}
+
+.outfit-inspo-modal-opened {
+  animation: var(--desktop-modal-animation-time) fade-in;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.outfit-inspo-modal-content {
+  padding: var(--desktop-modal-header-height)
+    var(--desktop-modal-content-padding) 
+    var(--desktop-modal-content-padding)
+    var(--desktop-modal-content-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.outfit-set {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.outfit-photo-grid {
+  display: grid;
+  grid-template-columns: var(--desktop-grid-columns);
+  gap: 16px 16px;
+  height: auto;
+}
+
+.outfit-grid-item {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  grid-column: span 2;
+}
+
+.close {
+  height: 24px;
+  width: 24px;
+  padding: 24px;
+  stroke: var(--sage);
+}
+
+.close:hover,
+.close:focus {
+  stroke: var(--light-sage);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header-container {
+  position: fixed;
+  background: var(--off-white);
+  width: var(--desktop-modal-width);
+  display: flex;
+  justify-content: space-between;
+}
+
+.side-sheet-title {
+  padding: var(--desktop-modal-content-padding) 0
+    var(--desktop-modal-content-padding) var(--desktop-modal-content-padding);
+}
+
+/** Tablet */
+@media screen and (max-width: 991px) {
+  .outfit-inspo-modal-content-container {
+    width: 100vw;
+  }
+
+  .outfit-inspo-modal-content {
+    padding-top: var(--tablet-modal-header-height);
+  }
+
+  .outfit-grid-item {
+    grid-column: span 4;
+  }
+
+  .outfit-inspo-modal-content-closed {
+    animation: var(--desktop-modal-animation-time) tablet-modal-slide-right;
+  }
+
+  .outfit-inspo-modal-closed {
+    animation: none;
+  }
+
+  .outfit-inspo-modal-opened {
+    animation: none;
+    background-color: transparent;
+  }
+
+  .modal-header-container {
+    width: 100%;
+  }
+}
+
+/** Mobile */
+@media screen and (max-width: 479px) {
+  .outfit-inspo-modal-content {
+    padding-top: var(--mobile-modal-header-height);
+  }
+
+  .side-sheet-title {
+    padding-bottom: 24px;
+  }
+
+  .outfit-grid-item {
+    grid-column: span 6;
+  }
+}
+
+@media screen and (max-width: 338px) {
+  .outfit-inspo-modal-content {
+    padding-top: var(--small-mobile-modal-header-height);
+  }
+}
