@@ -31,6 +31,12 @@
 
 .gallery-photo-container {
   display: flex;
+  transform: scale(1);
+  transition: all ease 750ms;
+}
+
+.gallery-photo-container:hover{ 
+  transform: scale(1.03);
 }
 
 #lg1 {
