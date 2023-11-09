@@ -54,6 +54,7 @@
   --desktop-wedding-party-blurb-name-top-pad: 4px;
   --desktop-wedding-party-blurb-name-bottom-pad: 16px;
   --desktop-wedding-party-photo-grid-area: 1 / 1 / 2 / 2;
+  --desktop-copyright-vertical-padding: 40px;
 
   /* tablet variables */
   --large-tablet-wedding-party-blurb-padding: 12px;
@@ -72,12 +73,15 @@
   --tablet-section-schedule-day-bottom-padding: 8px;
   --tablet-section-info-block-padding: 16px 0;
   --tablet-modal-header-height: 134px;
+  --tablet-copyright-vertical-padding: 32px;
 
   /* mobile variables */
-  --mobile-section-padding: 24px 24px 40px 24px;
+  --mobile-section-bottom-padding: 40px;
+  --mobile-section-padding: 24px 24px var(--mobile-section-bottom-padding) 24px;
   --mobile-section-side-padding: 24px;
   --mobile-modal-header-height: 118px;
   --small-mobile-modal-header-height: 172px;
+  --mobile-copyright-vertical-padding: 24px;
 }
 
 body,
@@ -295,6 +299,15 @@ li.details-item:not(:last-child) {
   padding: 16px 0 8px 0;
 }
 
+.copyright {
+  padding-top: calc(var(--desktop-section-bottom-padding) + var(--desktop-copyright-vertical-padding));
+  color: var(--light-grey);
+}
+
+#questions {
+  padding-bottom: var(--desktop-copyright-vertical-padding);
+}
+
 #questions h4 {
   color: var(--light-grey);
 }
@@ -384,6 +397,14 @@ li.details-item:not(:last-child) {
     aspect-ratio: 1;
     grid-column: 5 / span 4;
   }
+
+  .copyright {
+    padding-top: calc(var(--tablet-section-bottom-padding) + var(--tablet-copyright-vertical-padding));
+  }
+  
+  #questions {
+    padding-bottom: var(--tablet-copyright-vertical-padding);
+  }
 }
 
 /** Mobile */
@@ -399,5 +420,13 @@ li.details-item:not(:last-child) {
 
   .registry-icon {
     grid-column: 3 / span 8;
+  }
+
+  .copyright {
+    padding-top: calc(var(--mobile-section-bottom-padding) + var(--mobile-copyright-vertical-padding));
+  }
+  
+  #questions {
+    padding-bottom: var(--mobile-copyright-vertical-padding);
   }
 }
