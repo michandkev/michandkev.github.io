@@ -300,6 +300,10 @@ li.details-item:not(:last-child) {
 }
 
 .copyright {
+  max-width: calc(
+    var(--desktop-max-width) - 2 * var(--desktop-section-side-padding)
+  );
+  margin: 0 auto;
   padding-top: calc(var(--desktop-section-bottom-padding) + var(--desktop-copyright-vertical-padding));
   color: var(--light-grey);
 }
