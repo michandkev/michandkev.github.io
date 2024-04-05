@@ -232,6 +232,12 @@ li.details-item:not(:last-child) {
   color: var(--light-grey);
 }
 
+.info-details-info-block-sub-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .rsvp-button {
   background-color: var(--sage);
   color: var(--off-white);
