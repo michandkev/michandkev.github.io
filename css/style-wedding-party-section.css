@@ -40,6 +40,14 @@
       }
     }
   }
+
+  @media screen and (max-width: 1199px) {
+      .party-member-blurb-background {
+        background-color: rgba(0, 0, 0, 0);
+        opacity: 1;
+      }
+    
+  }
 }
 
 .wedding-party-info {
@@ -101,6 +109,10 @@
     var(--desktop-wedding-party-blurb-padding)
     var(--desktop-wedding-party-blurb-name-bottom-pad)
     var(--desktop-wedding-party-blurb-padding);
+}
+
+.groomsmen-blurb-name {
+  cursor: pointer;
 }
 
 .party-member-blurb {

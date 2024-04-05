@@ -292,3 +292,91 @@ inspoLink.addEventListener("click", (event) => {
   modal.classList.remove("outfit-inspo-modal-closed");
   modal.classList.add("outfit-inspo-modal-opened");
 });
+
+var peteLink = document.getElementById("peter-name");
+var petePhoto = document.getElementById("peter-photo");
+var peteClicks = 0;
+peteLink.addEventListener("click", (event) => {
+  peteClicks++;
+  var imgUrl = "";
+  if (peteClicks % 2 == 0) {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/pete_mobile.jpg')";
+    } else {
+      imgUrl = "url('/assets/pete_desktop.jpg')";
+    }
+  } else {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/pete_easteregg_mobile.png')";
+    } else {
+      imgUrl = "url('/assets/pete_easteregg_desktop.png')";
+    }
+  }
+  petePhoto.style.backgroundImage = imgUrl
+});
+
+var neilLink = document.getElementById("neil-name");
+var neilPhoto = document.getElementById("neil-photo");
+var neilClicks = 0;
+neilLink.addEventListener("click", (event) => {
+  neilClicks++;
+  var imgUrl = "";
+  if (neilClicks % 2 == 0) {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/neil_mobile.jpg')";
+    } else {
+      imgUrl = "url('/assets/neil_desktop.jpg')";
+    }
+  } else {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/neil_easteregg_mobile.png')";
+    } else {
+      imgUrl = "url('/assets/neil_easteregg_desktop.png')";
+    }
+  }
+  neilPhoto.style.backgroundImage = imgUrl
+});
+
+var ryanLink = document.getElementById("ryan-name");
+var ryanPhoto = document.getElementById("ryan-photo");
+var ryanClicks = 0;
+ryanLink.addEventListener("click", (event) => {
+  ryanClicks++;
+  var imgUrl = "";
+  if (ryanClicks % 2 == 0) {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/ryan_mobile.jpg')";
+    } else {
+      imgUrl = "url('/assets/ryan_desktop.jpg')";
+    }
+  } else {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/ryan_easteregg_mobile.png')";
+    } else {
+      imgUrl = "url('/assets/ryan_easteregg_desktop.png')";
+    }
+  }
+  ryanPhoto.style.backgroundImage = imgUrl
+});
+
+var rohanLink = document.getElementById("rohan-name");
+var rohanPhoto = document.getElementById("rohan-photo");
+var rohanClicks = 0;
+rohanLink.addEventListener("click", (event) => {
+  rohanClicks++;
+  var imgUrl = "";
+  if (rohanClicks % 2 == 0) {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/rohan_mobile.jpg')";
+    } else {
+      imgUrl = "url('/assets/rohan_desktop.jpg')";
+    }
+  } else {
+    if (window.matchMedia("(max-width: 1199px)").matches) {
+      imgUrl = "url('/assets/rohan_easteregg_mobile.png')";
+    } else {
+      imgUrl = "url('/assets/rohan_easteregg_desktop.png')";
+    }
+  }
+  rohanPhoto.style.backgroundImage = imgUrl
+});
